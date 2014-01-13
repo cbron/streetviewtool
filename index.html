@@ -35,9 +35,11 @@
       direction:rtl;
     }
     </style>
+    <script src="/js/ga.js"></script>
   </head>
   <body>
-
+  
+  <!-- http://itouchmap.com/latlong.html is helpful -->
   <!-- If your reading this, and you've realized theres some bad practices in here, just know that I was throwing my hands in the air. Oh yay yur. -->
 
   <div id="wrap">
@@ -55,7 +57,7 @@
                     <td><input id='LL' value='47.629277,-122.360168'></input></td>
                   </tr><tr>
                     <td>Heading (max 360)</td>
-                    <td><input id='heading' type=number value=140 min=1 max=360></input></td>
+                    <td><input id='heading' type=number value=150 min=1 max=360></input></td>
                   </tr><tr>
                     <td>FOV (default 60, max 120)</td>
                     <td><input id='fov' type=number value=55 max=120 min=0></input></td>
@@ -67,13 +69,13 @@
                     <td><input id='size' value='600x300'></input></td>
                   </tr><tr>
                     <td>Generated URL</td>
-                    <td><input id='generated-link' value="http://maps.googleapis.com/maps/api/streetview?size=600x300&location=47.629277,-122.360168&heading=140&pitch=0&sensor=false&fov=55"></input></td>
+                    <td><input id='generated-link' value="http://maps.googleapis.com/maps/api/streetview?size=600x300&location=47.629277,-122.360168&heading=150&pitch=0&sensor=false&fov=55"></input></td>
                   </tr>
               </table>
           </div>
         </div>
       </div>
-      <img id="svimg" src="http://maps.googleapis.com/maps/api/streetview?size=600x300&location=47.629277,-122.360168&heading=140&pitch=0&sensor=false&fov=55">
+      <img id="svimg" src="http://maps.googleapis.com/maps/api/streetview?size=600x300&location=47.629277,-122.360168&heading=150&pitch=0&sensor=false&fov=55">
       <div id="push"></div>
     </div>
 
