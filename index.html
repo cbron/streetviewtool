@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Street View Api Viewer Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/sticky-footer.css" rel="stylesheet">
+    <style>
+    .sv-container{
+    text-align: center;
+    }
+    table{
+        margin: 0px auto;
+        margin-bottom: 0px;
+        margin-top: 20px;
+        text-align: left;
+    }
+    table td{
+      padding-right: 10px;
+    }
+    .note{
+        font-size: .6em;
+    }
+    td, input{
+      font-size: .8em;
+    }
+    #footer{
+      text-align: center;
+    }
+    #wrap{
+      text-align: center;
+    }
+    #generated-link{
+      direction:rtl;
+    }
+    </style>
+  </head>
+  <body>
+
+  <!-- If your reading this, and you've realized theres some bad practices in here, just know that I was throwing my hands in the air. Oh yay yur. -->
+
+  <div id="wrap">
+      <div class="jumbotron">
+        <div class="container">
+          <!--[if lt IE 9]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+          <div class="sv-container">
+              <h1>Google Street View Api Tool</h1>
+              <span class="note">Note, there is a daily limit to the api (I.e. clicking up on the heading 100 times is not recommended). <a href='https://developers.google.com/maps/documentation/streetview' target="_blank">More Info</a></span>
+              <table>
+                  <tr>
+                    <td>Lat/Long</td>
+                    <td><input id='LL' value='47.629277,-122.360168'></input></td>
+                  </tr><tr>
+                    <td>Heading (max 360)</td>
+                    <td><input id='heading' type=number value=140 min=1 max=360></input></td>
+                  </tr><tr>
+                    <td>FOV (default 60, max 120)</td>
+                    <td><input id='fov' type=number value=55 max=120 min=0></input></td>
+                  </tr><tr>
+                    <td>Pitch</td>
+                    <td><input id='pitch' value='0'></input></td>
+                  </tr><tr>
+                    <td>Size</td>
+                    <td><input id='size' value='600x300'></input></td>
+                  </tr><tr>
+                    <td>Generated URL</td>
+                    <td><input id='generated-link' value="http://maps.googleapis.com/maps/api/streetview?size=600x300&location=47.629277,-122.360168&heading=140&pitch=0&sensor=false&fov=55"></input></td>
+                  </tr>
+              </table>
+          </div>
+        </div>
+      </div>
+      <img id="svimg" src="http://maps.googleapis.com/maps/api/streetview?size=600x300&location=47.629277,-122.360168&heading=140&pitch=0&sensor=false&fov=55">
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">calebbron.com. Copyright 2014. (But feel free to steal it)</p>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $("input").change(function(){
+          var str="http://maps.googleapis.com/maps/api/streetview?size="+ $("#size").val() +"&location="+ $("#LL").val() +"&heading=" + $("#heading").val() + "&pitch="+ $("#pitch").val() +"&sensor=false&fov="+ $("#fov").val();
+          $("#svimg").prop("src", str);
+          $("#generated-link").val(str);
+        });
+      });
+    </script>
+
+  </body>
+</html>
